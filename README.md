@@ -1,6 +1,6 @@
 - 👋 Opa, sou @mnetoo
 - 👀 interessado em tecnologia e biologia
-- 🌱 C, C++, HTML, CSS, JavaScritp, Bootstrap
+- 🌱 informata biomédico, web dev
 - 💞️ Compromissado
 - 📫 Instagram @marcus.netoo
 - - 😄 Ele/dele
