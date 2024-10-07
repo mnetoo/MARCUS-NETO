@@ -1,7 +1,6 @@
-- 👋 Opa, sou @mnetoo
-- 👀 interessado em tecnologia e biologia
-- 🌱 informata biomédico, web dev
-- 💞️ Compromissado
+- 👋 Hey, I'm @mnetoo
+- 👀 interested in technology and biology
+- 🌱 biomedical informatics, web dev
 - 📫 Instagram @marcus.netoo
-- - 😄 Ele/dele
-- ⚡ Músico
+- - 😄 He/him
+- ⚡ Musician
