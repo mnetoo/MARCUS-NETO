@@ -1,4 +1,4 @@
-# Hi there, I'm [Your Name]! 👋
+# Hi there, I'm [Marcus Neto]! 👋
 
 I am a **Biomedical Informatics** student at **UFPR** with practical experience in **web development** and **desktop applications**, working on both the **backend** and **frontend**. I have a solid background in **programming** and use **Object-Oriented Programming (OOP)** principles to create **scalable** and **well-structured** solutions.
 
@@ -25,8 +25,8 @@ I am a **Biomedical Informatics** student at **UFPR** with practical experience 
 ## 📫 How to reach me
 
 - [LinkedIn](https://www.linkedin.com/in/marcus-neto-a83319306/)
-- [Email](marcusneto@ufpr.br)
-- [Email](marcusnetoo@outlook.com)
+- [Institutional Email](marcusneto@ufpr.br)
+- [Persona Email](marcusnetoo@outlook.com)
 
 ## 📊 GitHub Stats
 
