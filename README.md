@@ -5,9 +5,9 @@ Experience in frontend and backend, creating dynamic and responsive applications
 C | C++ | C# | Pascal | Python | Web Developer | OOP
 
 
-| Linguagem  | Ícone  |
-|------------|--------|
-| C          | ![C](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg) |
-| C++        | ![C++](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg) |
-| C#         | ![C#](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg) |
-| JavaScript | ![JS](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg) |
+![C](https://img.shields.io/badge/-C-00599C?style=flat-square&logo=c&logoColor=white)
+![C++](https://img.shields.io/badge/-C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white)
+![C#](https://img.shields.io/badge/-C%23-239120?style=flat-square&logo=c-sharp&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Pascal](https://img.shields.io/badge/-Pascal-00599C?style=flat-square&logo=delphi&logoColor=white)
+
