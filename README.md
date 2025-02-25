@@ -1,4 +1,4 @@
-# Hi there, I'm [Marcus Neto]! 👋
+# Hi there, I'm Marcus Neto! 👋
 
 I am a **Biomedical Informatics** student at **UFPR** with practical experience in **web development** and **desktop applications**, working on both the **backend** and **frontend**. I have a solid background in **programming** and use **Object-Oriented Programming (OOP)** principles to create **scalable** and **well-structured** solutions.
 
