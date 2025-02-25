@@ -2,4 +2,4 @@ I am a Biomedical Informatics student at UFPR with practical experience in web d
 
 Experience in frontend and backend, creating dynamic and responsive applications, developing desktop applications.
 
-![C](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg) | ![C++](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg) | ![C#](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharporiginal.svg) | ![JS](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg) | ![HTML](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html/html-original.svg)
+![C](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg) | ![C++](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg) | ![C#](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharporiginal.svg) | ![JS](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg)
