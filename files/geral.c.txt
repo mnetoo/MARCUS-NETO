@@ -1,0 +1,680 @@
+/*
+
+--------    IMPLEMENTAÇÃO DAS FUNÇÕES DE ORDENAÇÃO E BUSCA    --------
+--------    ALUNO: MARCUS SEBASTIÃO ADRIANO ROCHA NETO GRR: 20240710    --------
+--------    Algoritmos de Ordenação: QuickSort, ShellSort, SelectionSort    --------
+--------    Algoritmos de Busca: Sequencial, Binária    --------
+--------    TRABALHO PRÁTICO - PROF. DR .ELIAS     --------
+
+*/
+
+
+//                                              GERA VETOR ALEATORIO
+
+// Função que preenche um vetor de inteiros com valores aleatórios entre 0 e MAX_VAL
+void geraVetor(int vetor[]) 
+{
+    // Loop para percorrer cada posição do vetor até o tamanho definido por TAM
+    for (int i = 0; i < TAM; i++) 
+    {
+        // Atribui um valor aleatório a cada posição do vetor
+        // rand() % (MAX_VAL + 1) gera um número entre 0 e MAX_VAL (incluindo ambos)
+        vetor[i] = rand() % (MAX_VAL + 1);
+        memcpy(copiav, v, TAM * sizeof(int));
+    }
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+//                                              MENU INTERATIVO
+
+
+// Função para exibir o menu e retornar a opção escolhida
+int menu() 
+{
+    int opcao;
+    static bool primeiraExecucao = true; // Controle para verificar se é a primeira execução da função
+
+    // Mensagem de boas-vindas exibida apenas na primeira execução
+    if (primeiraExecucao) 
+    {
+        printf("\n");
+        printf("                                    Bem-vindo ao Trabalho Prático da disciplina de Algoritmos II!\n");
+        printf("                                    Aqui você verá a implementação de algoritmos de ordenação e busca.\n");
+        printf("\n");
+        printf("Selecione a operação desejada:\n");
+        printf("\n");
+        primeiraExecucao = false;
+    }
+
+    // Exibe o menu de opções
+    printf("\n");
+    printf("0. Sair\n");
+    printf("1. Gerar Vetor\n");
+    printf("2. QuickSort - Pivô Aleatório\n");
+    printf("3. QuickSort - Pivô Mediana de Três\n");
+    printf("4. ShellSort - Sequência de Knuth\n");
+    printf("5. ShellSort - Sequência de Hibbard\n");
+    printf("6. SelectionSort - Quadrático\n");
+    printf("7. Busca Sequencial\n");
+    printf("8. Busca Binária\n");
+    printf("9. Executar todos os algoritmos 1000 vezes\n");
+    printf("\n");
+
+    // Solicita a entrada do usuário e armazena em 'opcao'
+    printf("Digite a opção desejada: ");
+    scanf("%d", &opcao);
+
+    return opcao;
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+//                                  EXECUTA A OPÇÃO ESCOLHIDA
+
+// Função para executar a operação com base na opção escolhida
+void program(int opcao) 
+{            
+    switch (opcao) 
+    {
+        case 0:
+            printf("Saindo do programa...\n");
+            break;
+
+
+        case 1:
+            printf("Vetor gerado com sucesso...\n");
+
+
+            geraVetor(v);
+            vetorGerado = true;
+
+            for(int i = 0; i < TAM; i++)
+                v1[i] = v[i];
+
+            printf("Digite o tamanho do vetor que deseja visualizar: ");
+            int n;
+            scanf("%d", &n);
+            imprimeVetor(v, n);
+            break;
+
+
+        case 2:
+            int escolha;
+
+            if (!vetorGerado) 
+            {
+                printf("Vetor não gerado! Por favor, gere um vetor antes de executar o algoritmo.\n");
+                break;
+            }
+            
+            printf("\n");
+            printf("Gerar Vetor? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                geraVetor(v);
+                printf("\n");
+                printf("Deseja visualizar o vetor gerado? (1. Sim / 2. Não):\n");
+                scanf("%d", &escolha);
+
+                if (escolha == 1) 
+                {
+                    printf("\n");
+                    printf("Digite o tamanho do vetor que deseja visualizar: ");
+                    int n;
+                    scanf("%d", &n);
+                    imprimeVetor(copiav, n);
+                }
+            }
+
+            printf("\n");
+            printf("Executando QuickSort com Pivô Aleatório...\n");
+            quickSortAleatorio(copiav, 0, TAM - 1);
+            exibirContagens("QuickSort - Pivô Aleatório");
+
+            printf("\n");
+            printf("Deseja imprimir o vetor ordenado? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                printf("\n");
+                printf("Digite o tamanho do vetor que deseja visualizar: ");
+                int n;
+                scanf("%d", &n);
+                imprimeVetor(copiav, n);
+            }
+            break;
+
+
+        case 3:
+            contagemComparacoes = 0;
+            contagemTrocas = 0;
+
+            if (!vetorGerado) 
+            {
+                printf("Vetor não gerado! Por favor, gere um vetor antes de executar o algoritmo.\n");
+                break;
+            }
+
+            printf("Gerar Vetor? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                geraVetor(v);
+                printf("\n");
+                printf("Deseja visualizar o vetor gerado? (1. Sim / 2. Não):\n");
+                scanf("%d", &escolha);
+
+                if (escolha == 1) 
+                {
+                    printf("\n");
+                    printf("Digite o tamanho do vetor que deseja visualizar: ");
+                    int n;
+                    scanf("%d", &n);
+                    imprimeVetor(copiav, n);
+                }
+            }
+
+            printf("\n");
+            memcpy(copiav, v, TAM * sizeof(int));
+            printf("Executando QuickSort com Mediana de Três...\n");
+            quickSortMedianaDeTres(copiav, 0, TAM - 1);
+            exibirContagens("QuickSort - Pivô Mediana de Três");
+
+            printf("\n");
+            printf("Deseja imprimir o vetor ordenado? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                printf("\n");
+                printf("Digite o tamanho do vetor que deseja visualizar: ");
+                int n;
+                scanf("%d", &n);
+                imprimeVetor(copiav, n);
+            }
+            break;
+
+
+        case 4:
+            contagemComparacoes = 0;
+            contagemTrocas = 0;
+
+            if (!vetorGerado) 
+            {
+                printf("Vetor não gerado! Por favor, gere um vetor antes de executar o algoritmo.\n");
+                break;
+            }
+
+            printf("Gerar Vetor? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                geraVetor(v);
+                printf("\n");
+                printf("Deseja visualizar o vetor gerado? (1. Sim / 2. Não):\n");
+                scanf("%d", &escolha);
+
+                if (escolha == 1) 
+                {
+                    printf("\n");
+                    printf("Digite o tamanho do vetor que deseja visualizar: ");
+                    int n;
+                    scanf("%d", &n);
+                    imprimeVetor(copiav, n);
+                }
+            }
+
+            printf("\n");
+            memcpy(copiav, v, TAM * sizeof(int));
+            printf("Executando ShellSort com Sequência de Knuth...\n");
+            shellSortKnuth(copiav, TAM);
+            exibirContagens("ShellSort - Sequência de Knuth");
+
+            printf("\n");
+            printf("Deseja imprimir o vetor ordenado? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                printf("\n");
+                printf("Digite o tamanho do vetor que deseja visualizar: ");
+                int n;
+                scanf("%d", &n);
+                imprimeVetor(copiav, n);
+            }
+            break;
+
+
+        case 5:
+            contagemComparacoes = 0;
+            contagemTrocas = 0;
+
+            if (!vetorGerado) 
+            {
+                printf("Vetor não gerado! Por favor, gere um vetor antes de executar o algoritmo.\n");
+                break;
+            }
+
+            printf("Gerar Vetor? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                geraVetor(v);
+                printf("\n");
+                printf("Deseja visualizar o vetor gerado? (1. Sim / 2. Não):\n");
+                scanf("%d", &escolha);
+
+                if (escolha == 1) 
+                {
+                    printf("\n");
+                    printf("Digite o tamanho do vetor que deseja visualizar: ");
+                    int n;
+                    scanf("%d", &n);
+                    imprimeVetor(copiav, n);
+                }
+            }
+
+            printf("\n");
+            memcpy(copiav, v, TAM * sizeof(int));
+            printf("Executando ShellSort com Sequência de Hibbard...\n");
+            shellSortHibbard(copiav, TAM);
+            exibirContagens("ShellSort - Sequência de Hibbard");
+
+            printf("\n");
+            printf("Deseja imprimir o vetor ordenado? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                printf("\n");
+                printf("Digite o tamanho do vetor que deseja visualizar: ");
+                int n;
+                scanf("%d", &n);
+                imprimeVetor(copiav, n);
+            }
+
+            break;
+
+
+        case 6:
+            contagemComparacoes = 0;
+            contagemTrocas = 0;
+
+            if (!vetorGerado) 
+            {
+                printf("Vetor não gerado! Por favor, gere um vetor antes de executar o algoritmo.\n");
+                break;
+            }
+
+            printf("Gerar Vetor? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                geraVetor(v);
+                printf("\n");
+                printf("Deseja visualizar o vetor gerado? (1. Sim / 2. Não):\n");
+                scanf("%d", &escolha);
+
+                if (escolha == 1) 
+                {
+                    printf("\n");
+                    printf("Digite o tamanho do vetor que deseja visualizar: ");
+                    int n;
+                    scanf("%d", &n);
+                    imprimeVetor(copiav, n);
+                }
+            }
+
+            printf("\n");
+            memcpy(copiav, v, TAM * sizeof(int));
+            printf("Executando SelectionSort...\n");
+            selectionSort(copiav, TAM);
+            exibirContagens("SelectionSort");
+
+            printf("\n");
+            printf("Deseja imprimir o vetor ordenado? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                printf("\n");
+                printf("Digite o tamanho do vetor que deseja visualizar: ");
+                int n;
+                scanf("%d", &n);
+                imprimeVetor(copiav, n);
+            }
+
+            break;
+
+
+        case 7:
+            contagemComparacoes = 0;
+
+            if (!vetorGerado) 
+            {
+                printf("Vetor não gerado! Por favor, gere um vetor antes de executar o algoritmo.\n");
+                break;
+            }
+
+            printf("Gerar Vetor? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                geraVetor(v1);
+                printf("\n");
+                printf("Deseja visualizar o vetor gerado? (1. Sim / 2. Não):\n");
+                scanf("%d", &escolha);
+
+                if (escolha == 1) 
+                {
+                    printf("\n");
+                    printf("Digite o tamanho do vetor que deseja visualizar: ");
+                    int n;
+                    scanf("%d", &n);
+                    imprimeVetor(v1, n);
+                }
+            }
+
+            printf("\n");
+            printf("Executando Busca Sequencial...\n");
+            realizarBuscaSequencial(v1, TAM);
+            break;
+
+
+        case 8:
+            contagemComparacoes = 0;
+
+            if (!vetorGerado) 
+            {
+                printf("Vetor não gerado! Por favor, gere um vetor antes de executar o algoritmo.\n");
+                break;
+            }
+
+            printf("Gerar Vetor? (1. Sim / 2. Não):\n");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) 
+            {
+                geraVetor(v);
+                quickSortMedianaDeTres(copiav, 0, TAM - 1);
+                printf("\n");
+                printf("Deseja visualizar o vetor gerado (Ordenado)? (1. Sim / 2. Não):\n");
+                scanf("%d", &escolha);
+
+                if (escolha == 1) 
+                {
+                    printf("\n");
+                    printf("Digite o tamanho do vetor que deseja visualizar: ");
+                    int n;
+                    scanf("%d", &n);
+                    imprimeVetor(copiav, n);
+                }
+            }
+            else
+                quickSortMedianaDeTres(copiav, 0, TAM - 1);
+
+            printf("\n");
+            memcpy(copiav, v, TAM * sizeof(int));
+            printf("Executando Busca Binária...\n");
+            realizarBuscaBinaria(copiav, TAM);
+            break;
+
+
+        case 9: 
+        {
+            const int numExecucoes = 1000;
+            int comparacoesQuickSortAleatorio[numExecucoes];
+            int comparacoesQuickSortMediana[numExecucoes];
+            int comparacoesShellSortKnuth[numExecucoes];
+            int comparacoesShellSortHibbard[numExecucoes];
+            int comparacoesSelectionSort[numExecucoes];
+            int comparacoesBuscaSequencial[numExecucoes];
+            int comparacoesBuscaBinaria[numExecucoes];
+
+            printf("\n");
+            printf("Executando TODOS os algoritmos 1000 vezes...\n");
+
+            // Execução e contagem para cada algoritmo
+            for (int i = 0; i < numExecucoes; i++) 
+            {
+                int v[TAM];
+                int v1[TAM];
+
+                // QuickSort com Pivô Aleatório
+                geraVetor(v);
+                contagemComparacoes = 0;
+                quickSortAleatorio(v, 0, TAM - 1);
+                comparacoesQuickSortAleatorio[i] = contagemComparacoes;
+
+                // QuickSort com Pivô Mediana de Três
+                geraVetor(v);
+                contagemComparacoes = 0;
+                quickSortMedianaDeTres(v, 0, TAM - 1);
+                comparacoesQuickSortMediana[i] = contagemComparacoes;
+
+                // ShellSort com Sequência de Knuth
+                geraVetor(v);
+                contagemComparacoes = 0;
+                shellSortKnuth(v, TAM);
+                comparacoesShellSortKnuth[i] = contagemComparacoes;
+
+                // ShellSort com Sequência de Hibbard
+                geraVetor(v);
+                contagemComparacoes = 0;
+                shellSortHibbard(v, TAM);
+                comparacoesShellSortHibbard[i] = contagemComparacoes;
+
+                // SelectionSort
+                geraVetor(v);
+                contagemComparacoes = 0;
+                selectionSort(v, TAM);
+                comparacoesSelectionSort[i] = contagemComparacoes;
+
+                // Busca Sequencial
+                geraVetor(v1);  // Usa v1 para não alterar o vetor ordenado em busca binária
+                contagemComparacoes = 0;
+                BuscaSequencialAleat(v1, TAM, &contagemComparacoes);
+                comparacoesBuscaSequencial[i] = contagemComparacoes;
+
+                // Busca Binária
+                contagemComparacoes = 0;
+                BuscaBinariaAleat(v, TAM, &contagemComparacoes);
+                comparacoesBuscaBinaria[i] = contagemComparacoes;
+            }
+
+            // Cálculo da média, desvio padrão e total de comparações para cada algoritmo
+            double mediaQuickAleatorio = calcularMedia(comparacoesQuickSortAleatorio, numExecucoes);
+            double desvioQuickAleatorio = calcularDesvioPadrao(comparacoesQuickSortAleatorio, numExecucoes, mediaQuickAleatorio);
+            int totalQuickAleatorio = calcularTotalComparacoes(comparacoesQuickSortAleatorio, numExecucoes);
+
+            double mediaQuickMediana = calcularMedia(comparacoesQuickSortMediana, numExecucoes);
+            double desvioQuickMediana = calcularDesvioPadrao(comparacoesQuickSortMediana, numExecucoes, mediaQuickMediana);
+            int totalQuickMediana = calcularTotalComparacoes(comparacoesQuickSortMediana, numExecucoes);
+
+            double mediaShellKnuth = calcularMedia(comparacoesShellSortKnuth, numExecucoes);
+            double desvioShellKnuth = calcularDesvioPadrao(comparacoesShellSortKnuth, numExecucoes, mediaShellKnuth);
+            int totalShellKnuth = calcularTotalComparacoes(comparacoesShellSortKnuth, numExecucoes);
+
+            double mediaShellHibbard = calcularMedia(comparacoesShellSortHibbard, numExecucoes);
+            double desvioShellHibbard = calcularDesvioPadrao(comparacoesShellSortHibbard, numExecucoes, mediaShellHibbard);
+            int totalShellHibbard = calcularTotalComparacoes(comparacoesShellSortHibbard, numExecucoes);
+
+            double mediaSelection = calcularMedia(comparacoesSelectionSort, numExecucoes);
+            double desvioSelection = calcularDesvioPadrao(comparacoesSelectionSort, numExecucoes, mediaSelection);
+            int totalSelection = calcularTotalComparacoes(comparacoesSelectionSort, numExecucoes);
+
+            double mediaBuscaSequencial = calcularMedia(comparacoesBuscaSequencial, numExecucoes);
+            double desvioBuscaSequencial = calcularDesvioPadrao(comparacoesBuscaSequencial, numExecucoes, mediaBuscaSequencial);
+            int totalBuscaSequencial = calcularTotalComparacoes(comparacoesBuscaSequencial, numExecucoes);
+
+            double mediaBuscaBinaria = calcularMedia(comparacoesBuscaBinaria, numExecucoes);
+            double desvioBuscaBinaria = calcularDesvioPadrao(comparacoesBuscaBinaria, numExecucoes, mediaBuscaBinaria);
+            int totalBuscaBinaria = calcularTotalComparacoes(comparacoesBuscaBinaria, numExecucoes);
+
+
+            // Exibição dos resultados
+            printf("\n");
+            printf("Resultados das Comparações após 1000 execuções:\n");
+
+            printf("\n");
+            printf("QuickSort (Pivô Aleatório): Média = %.2f\n", mediaQuickAleatorio);
+            printf("QuickSort (Pivô Aleatório): Desvio Padrão = %.2f\n", desvioQuickAleatorio);
+            printf("QuickSort (Pivô Aleatório): Total = %d\n", totalQuickAleatorio);
+            printf("____________________________________________________________________________\n");
+
+
+
+            printf("\n");
+            printf("QuickSort (Pivô Mediana de Três): Média = %.2f, \n", mediaQuickMediana);
+            printf("QuickSort (Pivô Mediana de Três): Desvio Padrão = %.2f\n", desvioQuickMediana);
+            printf("QuickSort (Pivô Mediana de Três): Total = %d\n", totalQuickMediana);
+            printf("____________________________________________________________________________\n");
+
+
+
+            printf("\n");
+            printf("ShellSort (Sequência de Knuth): Média = %.2f\n", mediaShellKnuth);
+            printf("ShellSort (Sequência de Knuth): Desvio Padrão = %.2f\n", desvioShellKnuth);
+            printf("ShellSort (Sequência de Knuth): Total = %d\n", totalShellKnuth);
+            printf("____________________________________________________________________________\n");
+
+
+
+            printf("\n");
+            printf("ShellSort (Sequência de Hibbard): Média = %.2f\n", mediaShellHibbard);
+            printf("ShellSort (Sequência de Hibbard): Desvio Padrão = %.2f\n", desvioShellHibbard);
+            printf("ShellSort (Sequência de Hibbard): Total = %d\n", totalShellHibbard);
+            printf("____________________________________________________________________________\n");
+            
+            
+            
+            printf("\n");
+            printf("SelectionSort: Média = %.2f\n", mediaSelection);
+            printf("SelectionSort: Desvio Padrão = %.2f\n", desvioSelection);
+            printf("SelectionSort: Total = %d\n", totalSelection);
+            printf("____________________________________________________________________________\n");
+            
+
+
+            printf("\n");
+            printf("Busca Sequencial: Média = %.2f\n", mediaBuscaSequencial);
+            printf("Busca Sequencial: Desvio Padrão = %.2f\n", desvioBuscaSequencial);
+            printf("Busca Sequencial: Total = %d\n", totalBuscaSequencial);
+            printf("____________________________________________________________________________\n");
+            
+
+            
+            printf("\n");
+            printf("Busca Binária: Média = %.2f\n", mediaBuscaBinaria);
+            printf("Busca Binária: Desvio Padrão = %.2f\n",desvioBuscaBinaria);
+            printf("Busca Binária: Total = %d\n", totalBuscaBinaria);
+            printf("____________________________________________________________________________\n");
+
+
+            break;
+        }
+
+        default:
+            printf("Opção inválida! Tente novamente.\n");
+            break;
+    }
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+//                                         IMPRESSÃO VETOR
+
+// Imprime um vetor de inteiros
+void imprimeVetor(int vetor[], int n) 
+{
+    if (n > TAM)
+        n = TAM;  // Limita a impressão ao tamanho máximo do vetor
+
+    for (int i = 0; i < n; i++)
+        printf("%d ", vetor[i]);
+
+    printf("\n");
+}
+
+
+//-------------------------------------------------------------------------------------------------------------
+
+//                                          TROCA DE ELEMENTOS
+
+// Troca o conteúdo de duas variáveis
+void trocar(int *a, int *b) 
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+    contagemTrocas++;
+}
+
+
+//-------------------------------------------------------------------------------------------------------------
+
+//                                              EXIBE DADOS
+
+void exibirContagens(char *metodo) 
+{
+    printf("\n[%s] Contagem de trocas: %d\n", metodo, contagemTrocas);
+    printf("[%s] Contagem de comparações: %d\n", metodo, contagemComparacoes);
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+
+//                                             CALCULA OS DADOS
+
+// Função auxiliar para calcular a média de um conjunto de valores
+double calcularMedia(int valores[], int numExecucoes) 
+{
+    int soma = 0;  // Variável para acumular a soma dos valores
+
+    // Percorre cada valor no array e adiciona à soma total
+    for (int i = 0; i < numExecucoes; i++) {
+        soma += valores[i];
+    }
+
+    // Retorna a média como um valor do tipo double
+    return (double)soma / numExecucoes;
+}
+
+
+// Função auxiliar para calcular o desvio padrão de um conjunto de valores
+double calcularDesvioPadrao(int valores[], int numExecucoes, double media) 
+{
+    double somaDesvios = 0;  // Variável para acumular a soma dos quadrados das diferenças
+
+    // Percorre cada valor no array e calcula o quadrado da diferença para a média
+    for (int i = 0; i < numExecucoes; i++) {
+        somaDesvios += pow(valores[i] - media, 2);  // Calcula (valor - média)² e adiciona à somaDesvios
+    }
+
+    // Retorna o desvio padrão, que é a raiz quadrada da média dos desvios quadrados
+    return sqrt(somaDesvios / numExecucoes);
+}
+
+
+// Função auxiliar para calcular o total de comparações realizadas
+int calcularTotalComparacoes(int valores[], int numExecucoes) 
+{
+    int total = 0;  // Variável para acumular o total das comparações
+
+    // Percorre cada valor no array e adiciona ao total
+    for (int i = 0; i < numExecucoes; i++) {
+        total += valores[i];
+    }
+
+    // Retorna o total acumulado de comparações
+    return total;
+}

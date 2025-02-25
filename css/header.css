@@ -1,0 +1,77 @@
+/* header.css */
+
+header {
+    column-gap: 10px;
+    padding: 6vh 6rem;
+    align-items: center;
+    text-align: center;
+}
+
+.caixaHeader {
+    display: grid;
+    grid-template-columns: 1fr 9fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(14, 13, 49);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.caixaHeader a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave */
+}
+
+.caixaHeader a:hover {
+    color: rgb(112, 50, 228); /* Muda a cor do texto */
+    transform: scale(1.2); /* Aumenta ligeiramente o tamanho */
+}
+
+/* Efeito de preenchimento de fundo */
+.caixaHeader a::after {
+    content: "";
+    position:static;
+    left: 0;
+    bottom: 0;
+    width: 70%;
+    height: 2px;
+    background: rgb(112, 50, 228);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.caixaHeader a:hover::after {
+    transform: scaleX(1); /* Expande a linha sob o texto */
+}
+
+header p{
+    margin: 0;
+}
+
+header img {
+    height: 8vh;
+}
+
+/* Regras para celular (até 767px de largura) */
+@media screen and (max-width: 767px) {
+    header {
+        column-gap: 1vh;
+        font-size: 10px;
+        padding: 4vh 1rem;
+    }
+    header img {
+        height: 4vh !important;
+    }
+}
+/* Regras para iPad/Tablet (largura mínima de 768px e largura máxima de 1200px)*/
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    header {
+        font-size: 10px;
+        padding: 4vh 3rem;
+    }
+    header img {
+        height: 4vh !important;
+    }
+}

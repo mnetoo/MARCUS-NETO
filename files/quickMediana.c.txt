@@ -1,0 +1,80 @@
+/*
+
+--------    IMPLEMENTAÇÃO DAS FUNÇÕES DE ORDENAÇÃO E BUSCA    --------
+--------    ALUNO: MARCUS SEBASTIÃO ADRIANO ROCHA NETO GRR: 20240710    --------
+--------    Algoritmos de Ordenação: QuickSort, ShellSort, SelectionSort    --------
+--------    Algoritmos de Busca: Sequencial, Binária    --------
+--------    TRABALHO PRÁTICO - PROF. DR .ELIAS     --------
+
+*/
+
+
+//                              UTILIZANDO A MEDIANA DE TRÊS ELEMENTOS DO VETOR
+
+// Função que escolhe o pivô como a mediana de três elementos: o primeiro, o meio e o último elemento do vetor.
+int medianaDeTres(int vetor[], int inicio, int fim) 
+{
+    // Calcula o índice do meio do vetor
+    int meio = (inicio + fim) / 2;
+
+    // Ordena os elementos nas posições início, meio e fim para garantir que o pivô será a mediana
+    // Se o primeiro elemento for maior que o do meio, troca-os
+    if (vetor[inicio] > vetor[meio]) trocar(&vetor[inicio], &vetor[meio]);
+    // Se o primeiro elemento for maior que o último, troca-os
+    if (vetor[inicio] > vetor[fim]) trocar(&vetor[inicio], &vetor[fim]);
+    // Se o meio for maior que o último, troca-os
+    if (vetor[meio] > vetor[fim]) trocar(&vetor[meio], &vetor[fim]);
+
+    // Coloca o valor da mediana (elemento do meio) na posição final do vetor
+    // Isso facilita a escolha da mediana como pivô para a partição
+    trocar(&vetor[meio], &vetor[fim]);
+
+    // Retorna o valor do pivô (mediana)
+    return vetor[fim];
+}
+
+
+// Função que particiona o vetor com base no pivô escolhido pela mediana de três
+// A partição organiza os elementos menores que o pivô à esquerda e os maiores à direita
+int particionarMedianaDeTres(int vetor[], int inicio, int fim) 
+{
+    // Obtém o pivô, que é a mediana de três
+    int pivo = medianaDeTres(vetor, inicio, fim);  
+
+    // Inicializa o índice do menor elemento à esquerda do início do vetor
+    int indiceMenor = inicio - 1;
+
+    // Loop para percorrer o vetor e organizar os elementos ao redor do pivô
+    for (int i = inicio; i < fim; i++) 
+    {
+        contagemComparacoes++;  // Conta cada comparação entre o elemento e o pivô
+        if (vetor[i] < pivo)  // Se o elemento é menor que o pivô
+        {
+            indiceMenor++;  // Incrementa o índice do menor elemento
+            trocar(&vetor[indiceMenor], &vetor[i]);  // Troca o elemento para a esquerda
+        }
+    }
+
+    // Coloca o pivô na posição correta (onde todos os elementos à esquerda são menores e à direita são maiores)
+    trocar(&vetor[indiceMenor + 1], &vetor[fim]);
+
+    // Retorna o índice da posição final do pivô, dividindo o vetor em duas partes
+    return indiceMenor + 1;
+}
+
+
+// Função que implementa o algoritmo de ordenação QuickSort utilizando a mediana de três como pivô
+void quickSortMedianaDeTres(int vetor[], int inicio, int fim) 
+{
+    // A recursão só continua se houver mais de um elemento a ser ordenado
+    if (inicio < fim) {
+        // Particiona o vetor e encontra o índice do pivô
+        int indicePivo = particionarMedianaDeTres(vetor, inicio, fim);
+        
+        // Ordena recursivamente os elementos à esquerda do pivô
+        quickSortMedianaDeTres(vetor, inicio, indicePivo - 1);
+        
+        // Ordena recursivamente os elementos à direita do pivô
+        quickSortMedianaDeTres(vetor, indicePivo + 1, fim);
+    }
+}

@@ -1,0 +1,12 @@
+.SobreMim {
+    grid-template-columns: 1fr 6fr 1fr;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.SobreMim p {
+    padding: 10x;
+    font-size: 20px;
+}

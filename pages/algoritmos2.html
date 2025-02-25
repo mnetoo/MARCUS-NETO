@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos 2</title>
+    <link rel="stylesheet" href="../css/alg2/algoritmos2.css">
+    <link rel="stylesheet" href="../css/alg2/header_alg2.css">
+    <link rel="stylesheet" href="../css/alg2/tabelas.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+
+<header>
+
+    <p><strong>Trabalho Prático de Ordenação e Pesquisa</strong></p>
+    <p>Disciplina CI1056 - Algoritmos e Estruturas de Dados II</p>
+    <p>2º Período de BCC & IBM - <a href="https://www.inf.ufpr.br/elias/algoritmos/index.html" target="_blank">Prof. Elias P. Duarte Jr.</a></p>
+
+</header>
+
+
+
+
+<body>
+
+    <main>
+        <h3>Relatório</h3>
+        <section class="relatorio">
+
+            <p>
+                Iniciei o desenvolvimento do trabalho na mesma semana que foi liberado as intruções.
+                De primeiro momento, pensei que pelo tamanho do trabalho, seria ideal
+                dividir os arquivos em TADs, para facilitar a organização e a manutenção do código.
+                Então, criei os arquivos de TADs e comecei a implementar as funções de cada item solicitado.
+                A primeira parte do trabalho foi a implementação do arquivo de cabeçalho.
+                Comecei implementando os protótipos das funções básicas para manipulação de vetores, função para gerar o
+                vetor,
+                para imprimir vetor, gerar número aleatório, etc.
+                Apartir disso, comecei a implementar o arquivo "funções.c", que continha a real implementação de cada
+                função prototipada no arquivo de cabeçalho.
+            </p>
+
+            <h5>Arquivo Header - <a href="../files/funções.h.txt" target="_blank">funções.h</a></h5>
+            <p>
+                O arquivo de cabeçalho foi criado para conter os protótipos das funções que foram implementadas no
+                arquivo de código-fonte "funções.c". Isso permite que outros arquivos possam chamar essas funções sem
+                precisar conhecer
+                os detalhes de sua implementação.
+            </p>
+
+            <h5>Código-fonte - <a href="../files/funções.c.txt" target="_blank">funções.c</a></h5>
+            <p>
+                O arquivo "funções.c" contém a implementação de cada função que foi prototipada anteriormente no arquivo
+                de cabeçalho "funções.h".
+                Isso permite que outros arquivos possam chamar essas funções sem precisar conhecer os detalhes de sua
+                implementação.
+            </p>
+
+            <h5>Main - <a href="../files/programa.c.txt" target="_blank">programa.c</a></h5>
+            <p>
+                O arquivo programa.c contém a função main do trabalho prático e é o ponto central de execução do código.
+                É nele que todo o fluxo do programa é controlado, incluindo a interação com os Tipos Abstratos de Dados (TADs)
+                e a coordenação de todas as operações principais, como a leitura dos dados, o processamento e a geração
+                de resultados.
+            </p>
+
+            <h5>Log dos Testes - <a href="../files/saida.txt" target="_blank">log</a></h5>
+            <p>
+                Este arquivo contém o log dos testes realizados durante o desenvolvimento do trabalho prático.
+                Ele registra as operações realizadas, os resultados obtidos e quaisquer problemas encontrados durante a
+                execução do programa.
+            <hr>
+        </section>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+        
+        <section class="ordenacao">
+            <h5>Detalhamento - <a href="../files/geral.c.txt" target="_blank">geral.c</a></h5>
+            <p>
+               Aqui vou detalhar algumas informações gerais sobre as demais funções e explicar o que cada uma faz.<br>
+               <ul>
+                    Bibliotecas Usadas:
+                    <li><strong>stdio.h</strong> - Biblioteca para entrada e saída</li>
+                    <li><strong>stdlib.h</strong> - Biblioteca para alocação de memória e utilidades</li>
+                    <li><strong>time.h</strong> - Biblioteca para manipulação de data e hora (para geração de números aleatórios)</li>
+                    <li><strong>string.h</strong> - Biblioteca para manipulação de strings</li>
+                    <li><strong>stdbool.h</strong> - Biblioteca para tipos booleanos (ex: true, false)</li>
+                    <li><strong>math.h</strong> - Biblioteca para operações matemáticas</li>
+                    <li><strong>funções.h</strong> - Inclui o cabeçalho com as funções personalizadas do programa</li> 
+               </ul>
+            
+                <ul>
+                    Funções para a manipulação de vetores e dados:
+                    <li><strong>geraVetor</strong> - Preenche um vetor de inteiros com valores aleatórios entre 0 e MAX_VAL e realiza a cópia do
+                                                        vetor original para um vetor "fantasma" que será usado para as ordenações                                
+                    </li>
+                    <li><strong>menu</strong> - Exibe o menu de opções ao usuário e retorna a opção selecionada</li>
+                    <li><strong>program</strong> - Executa a operação correspondente à opção escolhida pelo usuário</li>
+                    <li><strong>imprimeVetor </strong> - Imprime todos os elementos de um vetor de inteiros</li>
+                    <li><strong>trocar</strong> - Troca o conteúdo de duas variáveis inteiras</li>
+                    <li><strong>exibirContagens</strong> - Exibe o número de trocas e comparações realizadas em um método de ordenação ou busca específico</li>
+                    <li><strong>calcularMedia</strong> - Função auxiliar para calcular a média de um conjunto de valores</li> 
+                    <li><strong>calcularDesvioPadrao</strong> - Função auxiliar para calcular o desvio padrão de um conjunto de valores</li> 
+                    <li><strong>CalcularTotalComparacoes</strong> - Função auxiliar para calcular o total de comparações realizadas</li> 
+               </ul>
+
+               <ul>
+                    Diretivas de pré-processamento e váriaveis globais:
+                <li><strong>#define TAM 1024</strong> - Define o tamanho máximo do vetor</li>
+                <li><strong>#define MAX_VAL 2048</strong> - Define o valor máximo dos números aleatórios no vetor</li>
+                <li><strong>#define MAX_NUM 100000</strong> - Define o valor máximo para números aleatórios em certas funções</li>
+                <li><strong>extern int contagemTrocas;</strong> - Variável global que rastreia o número de trocas realizadas em algoritmos de ordenação e busca</li>
+                <li><strong>extern int contagemComparacoes;</strong> - Variável global que rastreia o número de comparações realizadas em algoritmos de ordenação e busca</li>
+           </ul>
+               <em>(Os códigos dessas funções estão no arquivo geral.c).</em>
+            </p>
+            <hr>
+        </section>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+        <h3>Algoritmos de Ordenação</h3>
+        <section class="ordenacao">
+            <p>
+                Seguindo as intruções do trabalho, comecei a pesquisar estratégias para a escolha de pivô no Quick Sort
+                e espaçamentos para o Shell Sort. Primeiramente pesquisei sobre o Quick e tive a ideia de uma das estratégias,
+                fazer o oposto do visto em sala, onde era escolhido o primeiro elemento como pivô, então decidi escolher o
+                último elemento como pivô. Estudei sobre ele e implementei a função do Quick Sort Último Elemento. Escolhi também 
+                a estratégia citada em sala, a Mediana de Três, onde se calcula a mediana de três elementos específicos como pivô. 
+                Estudei e implementei a função do Quick Sort Medina de Três Elementos.   
+            </p>
+            <p>
+                Pesquisei sobre os espaçamentos para o algoritmo do Shell Sort e na minha pesquisa encontrei dois espaçamentos
+                que são amplamente usados e reconhecidos por usa eficiência, a sequência de Knuth e a sequência de Hibbard. Estudei
+                sobre esses espaçamentos e implementei as funções de Shell Sort de Knuth e Hibbard.
+            </p>
+        </section>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+        <section class="ordenacao">
+            <h5>- Quick Sort (Pivô Elemento Aleatório) - <a href="../files/quickAleatorio.c.txt" target="_blank">quickSortAleatorio.c</a></h5>
+            <p>
+                Neste algoritmo, um elemento aleatório do vetor é escolhido como o pivô, que será utilizado como referência para
+                particionar o vetor em duas partes: uma com elementos menores ou iguais ao pivô e outra com elementos maiores.
+                Escolher um elemento aleatório do vetor como pivô  ajuda a reduzir a probabilidade de ocorrerem os piores casos de tempo de execução.
+            </p>
+            <p>
+                A escolha dessa estrategia nesse algoritmo faz com que No caso médio, essa estratégia mantém o desempenho esperado de O(N logN) 
+                e reduz a chance de de ocorrer O(N^2) que ocorreria se o pivô fosse consistentemente mal escolhido.
+                Após vários teste, percebi que essa estratégia é muito eficiente, pois em vetores ordenados ou quase ordenados
+                o desempenho do algoritmo é aproveitado ao máximo.
+            </p>
+            <p>
+                Para a implentação, criei a função <b>"particionarAleatorio"</b> que utiliza um elemento aleatório como pivô e particiona o vetor.
+                Criei a função <b>"quickSortAleatorio"</b> que é a função principal do algoritmo Quick Sort com pivô aleatório.
+                <em>(Todos os códigos relacionados ao Quick Sort - Pivô Elemento Aleatório estão no arquivo quickSortUltimo.c).</em>
+            </p>
+            <hr>
+        </section>
+        
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+        <section class="ordenacao">
+            <h5>- Quick Sort (Mediana de Três) - <a href="../files/quickMediana.c.txt" target="_blank">quickSortMediana.c</a></h5>
+            <p>
+                Neste algoritmo, o pivô é calculado com a mediana de três elementos, geralmente os elementos sao: 
+                Primeiro elemento, Elemento Central e Último Elemento. Para obter a mediana, o algoritmo apenas precisa
+                ordenar esses três valores em relação ao seu tamanho. O valor intermediário é o que será usado como pivô.
+                Essa estratégia reduz a probabilidade de pior caso, no qual o algoritmo Quick Sort pode se degradar para 
+                um algoritmo quadrático. Após vários testes, percebi que a estratégia da Mediana de Três é mais eficiente 
+                que a estratégia do Último Elemento.
+            </p>
+            <p>
+                Para a implentação, criei a função <b>"medianaDeTres"</b> que pega os elementos específicos e calcula a mediana entre eles para retornar o pívô a ser usado.
+                Criei a função <b>"particionarMedianaDeTres"</b> que particiona o vetor com base no pivô recebido. Criei a funação <b>"quickSortMedianaDeTres"</b> 
+                que é a função principal do algoritmo Quick Sort. <em>(Todos os códigos relacionados ao Quick Sort - Mediana de Três Elementos estão no arquivo quickSortMediana.c).</em>
+            </p>
+            <hr>
+        </section>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+        <section class="ordenacao">
+            <h5>- Shell Sort (Sequência de Knuth) - <a href="../files/knuth.c.txt" target="_blank">knuth.c</a></h5>
+            <p>
+                Neste algoritmo, o espaçamento é uma sequência específica calculada pela fórmula <b><em>(h = 3h + 1)</em></b>, onde h representa o
+                espaçamento (ou intervalo) usado em cada etapa de ordenação do Shell Sort. Essa sequência é utilizada até que h
+                seja maior do que o tamanho do vetor a ser ordenado. A sequência geralmente começa com h=1 e é expandida enquanto
+                h< n/3, onde n é o número de elementos no vetor. A sequência de Knuth se mostrou muito eficiente nos testes realizados.
+            </p>
+            <p>
+                Para a implementação, criei a função <b>"shellSortKnuth"</b> que é a função principal do algoritmo Shell Sort com a sequência de Knuth.
+                <em>(Todos os códigos relacionados ao Shell Sort - Sequência de Knuth estão no arquivo knuth.c).</em>
+            </p>
+            <hr>
+        </section>
+    
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+        <section class="ordenacao">
+            <h5>- Shell Sort (Sequência de Hibbard) - <a href="../files/hibbard.c.txt" target="_blank">hibbard.c</a></h5>
+            <p>
+                Neste algoritmo, o espaçamento é uma sequência específica que é gerada pela fórmula: <b><em>(h = 2^k - 1)</em></b>
+                onde k é um número inteiro positivo. Isso cria uma sequência de espaçamentos que começa com 1 e cresce como 1,3,7,15,31,…, 
+                continuando até que o espaçamento seja maior ou igual ao tamanho do vetor.  A sequência de Hibbard se mostrou muito eficiente nos testes realizados.
+            </p>
+            <p>
+                Para a implementação, criei a função <b>"shellSortHibbard"</b> que é a função principal do algoritmo Shell Sort com a sequência de Hibbard.
+                <em>(Todos os códigos relacionados ao Shell Sort - Sequência de Hibbard estão no arquivo hibbard.c).</em>
+            </p>
+            <hr>
+        </section>
+        
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+        <section class="ordenacao">
+            <h5>- Selection Sort (Algoritmo Quadrático) - <a href="../files/selection.c.txt" target="_blank">selection.c</a></h5>
+            <p>
+                Neste algoritmo, a ideia principal é fazer a verificação do vetor e marcar o índice do menor elemento.
+                Dessa forma, após verificar todos os elementos, o menor elemento é trocado com o primeiro elemento do vetor.
+                O processo é repetido para o segundo menor elemento e assim por diante, até que o vetor esteja completamente ordenado.
+            </p>
+            <p>
+                Vimos em sala que o Selection Sort é um algoritmo de ordenação quadrático, ou seja, ele se mostra o pior algoritmo
+                de ordenação, pois em todos e quaisquer casos, ele terá o mesmo desempenho.
+            </p>
+            <p>
+                Para a implementação, criei a função <b>"selectionSort"</b> que é a função principal do algoritmo Selection Sort.
+                <em>(Todos os códigos relacionados ao Selection Sort estão no arquivo selection.c).</em>
+            </p>
+            <hr>
+        </section>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <h3>Algoritmos de Busca</h3>
+    <section class="busca">
+        <p>
+            Após implementar os algoritmos de ordenação, comecei a implementar os algoritmos de busca. 
+            Conforme instruções do trabalho, implementei a busca sequencial e a busca binária, que são dois dos algoritmos de busca mais comuns e amplamente utilizados.
+            Cada um desses algoritmos tem suas próprias características e desempenho, sendo adequados para diferentes situações, vetor ordenado ou desordenado.
+            Implementei conforme o exigido, cada uma das funções, pode ser executada para buscar um elemento digitado pelo usuário, ou para buscar um número 
+            que foi gerado aleatóriamente.
+        </p>
+    </section>
+
+    <section class="busca">
+        <h5>- Busca Sequencial - <a href="../files/sequencial.c.txt" target="_blank">sequencial.c</a></h5>
+        <p>
+            É um algoritmo simples de busca que percorre uma lista ou vetor de elementos um por um até encontrar o elemento desejado 
+            ou até que todos os elementos tenham sido verificados. É um dos métodos de busca mais básicos e é amplamente utilizado 
+            para listas pequenas ou quando a lista não está ordenada. A implementação do código da função foi feita baseada nas aulas que tivemos em sala no começo da disciplina.
+        </p>
+        <p>
+            Para a opção da busca sequencial, implementei três funções. A função <b>"buscaSequencial"</b> é o algoritmo implementado própriamente dito. 
+            A função <b>"realizarBuscaSequencial"</b>, executa o trecho que solicita ao usuário a escolha de digitar um número ou gerar um número aleatório para ser buscado.
+            Assim que essa entrada é dada, esta função chama a função "buscaSequencial" e realiza a busca. Criei também a função <b>"buscaSequencialAleat"</b> que é usada
+            apenas na opçao do menu de execução de todos os algoritmos 1000 vezes, pois em cada iteração é gerado um número aleatório para ser buscado, sem a necessidade 
+            de interação com o usuário. <em>(Todos os códigos relacionados a busca sequencial estão no arquivo sequencial.c).</em>
+        </p>
+        <hr>
+    </section>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <section class="busca">
+        <h5>- Busca Binária - <a href="../files/binaria.c.txt" target="_blank">binaria.c</a></h5>
+        <p>
+            A pesquisa binária é um algoritmo eficiente para encontrar um elemento em uma lista ordenada. 
+            Ao contrário da busca sequencial, que verifica cada elemento um por um, a busca binária reduz 
+            o espaço de busca pela metade a cada comparação, resultando em um desempenho muito mais rápido para listas grandes. 
+            A pesquisa binária requer que a lista esteja ordenada em ordem crescente ou decrescente antes de ser executada.
+        </p>
+        <p>
+            Para a opção da busca binária, segui o mesmo padrão usado para a busca sequencial, implementei três funções. A função <b>"buscaBinaria"</b> 
+            é o algoritmo implementado própriamente dito. A função <b>"realizarBuscaBinaria"</b>, executa o trecho que solicita ao usuário a escolha 
+            de digitar um número ou gerar um número aleatório para ser buscado. Assim que essa entrada é dada, esta função chama a função "buscaBinaria" 
+            e realiza a busca. Criei também a função <b>"buscaBinariaAleat"</b> que é usada apenas na opçao do menu de execução de todos os algoritmos 1000 vezes, 
+            pois em cada iteração é gerado um número aleatório para ser buscado, sem a necessidade de interação com o usuário. <br>
+            <em>(Todos os códigos relacionados a busca sequencial estão no arquivo binaria.c).</em>
+        </p>
+        <hr>
+    </section>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <h3>Análise dos Resultados</h3>
+    <section class="analise">
+        <p>
+            Após implementar todos os algoritmos de ordenação e busca, coloquei o programa para executar várias vezes para analisar o desempenho de cada um deles.
+            Para uma análise mais completa, utilizei a opção 9 do programa que executa 1000 vezes cada algoritmo de ordenação e busca. Os resultados obtidos foram esses
+            da tabela a seguir:
+        </p>
+    </section>
+
+    <section class="analise">
+        <table>
+            <thead>
+                <tr>
+                    <th>Algoritmo</th>
+                    <th>Nº Comparações</th>
+                    <th>Média</th>
+                    <th>Desvio Padrão</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Quick Sort - Mediana de Três Elementos</td>
+                    <td>9.964.039</td>
+                    <td>9642,03</td>
+                    <td>347,43</td>
+                </tr>
+
+                <tr>
+                    <td>Quick Sort - Elemento Aleatório</td>
+                    <td>11.319.844</td>
+                    <td>11319,84</td>
+                    <td>665,16</td>
+                </tr>
+                
+                <tr>
+                    <td>Shell Sort - Sequência de Knuth</td>
+                    <td>14.212.505</td>
+                    <td>14216,08</td>
+                    <td>470,86</td>
+                </tr>
+
+                <tr>
+                    <td>Shell Sort - Sequência de Hibbard</td>
+                    <td>14.954.584</td>
+                    <td>14954,59</td>
+                    <td>384,93</td>
+                </tr>
+
+                <tr>
+                    <td>Selection Sort - Quadrático</td>
+                    <td>523.776.000</td>
+                    <td>523776,00</td>
+                    <td>-</td>
+                </tr>
+
+                <tr>
+                    <td>Busca Sequencial</td>
+                    <td>814.358,33</td>
+                    <td>814,35</td>
+                    <td>322,36</td>
+                </tr>
+
+                <tr>
+                    <td>Busca Binária</td>
+                    <td>9503,66</td>
+                    <td>9,50</td>
+                    <td>1,13</td>
+                </tr>
+            </tbody>
+            <caption>
+                Valores obtidos 3 vezes após a execução de todos os algoritmos 3.000 vezes cada.
+                Dessa forma, os valores são a média de todas as execuções.
+            </caption>
+        </table>
+    </section>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <section class="analise">
+        <h5>Análise - Ordenação</h5>
+        <p>
+            Analisando os dados, podemos concluir qual o melhor e também o pior algoritmo de ordenação e qual o melhor e pior algoritmo de busca:
+        </p>
+        <p>
+            <strong>O melhor algoritmo de ordenação é o Quick Sort com pivô na Mediana de Três Elementos</strong>, pois ele apresenta o menor número de comparações.
+            É um número muito grande de comparações, mas é o menor entre todos os algoritmos.
+            <strong>O Quick Sort com pivô sendo um elemento aleatório é o segundo melhor</strong> algoritmo de ordenação, mas ainda sim é inferior ao Mediana de Três Elementos.
+            Possui um número maior de comparações e um desvio padrão maior, o que indica um desempenho menos eficiente e mais variável do que o Quick Sort com Mediana de Três Elementos.
+        </p>
+
+        <p>
+            Os algoritmos do Shell Sort com sequência de Knuth e Hibbard apresentam um número muito maior de comparações do que os Quick Sort. Eles possuem um
+            desvio padrão menor, mas ainda assim são menos eficientes do que o Quick Sort. <strong>O Shell Sort - Sequência de Knuth é um pouco mais eficiente </strong> do que 
+            o Shell Sort - Sequência de Hibbard.
+        </p>
+
+        <p>
+            Podemos facilmente, identificar e afirmar que o <strong>Selection Sort é o pior algoritmo de ordenação</strong>, pois ele sempre terá o mesmo desempenho (quadrático).
+        </p>
+
+
+        <h5>Análise - Busca</h5>
+        <p>
+            Os números mostram que a <strong>busca binária é definitivamente o melhor algoritmo de busca</strong>, pois apresenta um número muito menor de comparações 
+            e um desvio padrão menor, o que indica maior consistência no desempenho. A busca sequencial, tem um número muito maior de comparações e um desvio padrão maior, o que indica
+            um desempenho menos eficiente e mais variável.<br>
+            Mesmo estando evidente qual o melhor, vale ressaltar que a busca binária possue a <em>restrição de funcionar apenas em vetor ordenado</em>, enquanto a busca sequencial 
+            funciona em qualquer vetor.
+        </p>
+
+
+        <h5>Análise Geral</h5>
+        <p>
+            Logo, podemos elencar os melhores algoritmos de ordenação e busca:<br>
+            <ul>
+                <li><strong>Melhor Algoritmo de Ordenação:</strong> Quick Sort (Pivô Mediana de Três)</li>
+                <li><strong>Pior Algoritmo de Ordenação:</strong> Selection Sort</li>
+                <li><strong>Melhor Algoritmo de Busca (Vetor Ordenado):</strong> Busca Binária</li>
+                <li><strong>Melhor Algoritmo de Busca (Vetor Genérico):</strong> Busca Sequencial</li>
+            </ul>
+            Esses resultados indicam que o Quick Sort (Mediana de Três Elementos) e a Busca Binária 
+            são as melhores opções para minimizar o número de comparações e manter um desempenho consistente.
+        </p>
+        <hr>
+    </section>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <h3>Conclusão</h3>
+    <section class="analise">
+        <p>
+            O trabalho prático de Ordenação e Pesquisa foi uma excelente oportunidade para aplicar os conceitos aprendidos em sala de aula e 
+            aprimorar minhas habilidades de programação. A implementação dos algoritmos de ordenação e busca foi desafiadora, mas muito gratificante.
+            A análise dos resultados obtidos foi muito interessante e me permitiu compreender melhor o desempenho de cada algoritmo e a importância de 
+            escolher o algoritmo certo para cada situação. A experiência adquirida neste trabalho prático será muito valiosa para minha 
+            formação acadêmica e profissional, e estou ansioso para aplicar esses conhecimentos em projetos futuros.
+        </p>
+    </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

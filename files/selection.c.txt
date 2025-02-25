@@ -1,0 +1,37 @@
+/*
+
+--------    IMPLEMENTAÇÃO DAS FUNÇÕES DE ORDENAÇÃO E BUSCA    --------
+--------    ALUNO: MARCUS SEBASTIÃO ADRIANO ROCHA NETO GRR: 20240710    --------
+--------    Algoritmos de Ordenação: QuickSort, ShellSort, SelectionSort    --------
+--------    Algoritmos de Busca: Sequencial, Binária    --------
+--------    TRABALHO PRÁTICO - PROF. DR .ELIAS     --------
+
+*/
+
+
+//                                      UTILIZANDO O SELECTION SORT
+
+
+// Função que ordena o vetor utilizando o método Selection Sort
+void selectionSort(int vetor[], int n) {
+    // Loop externo: percorre todos os elementos do vetor
+    for (int i = 0; i < n - 1; i++) {
+        int indiceMenor = i;  // Assume que o primeiro elemento não ordenado é o menor
+
+        // Loop interno: percorre o restante do vetor para encontrar o menor elemento
+        for (int j = i + 1; j < n; j++) {
+            contagemComparacoes++;  // Incrementa a contagem de comparações
+
+            // Se encontrar um elemento menor, atualiza o índice do menor elemento
+            if (vetor[j] < vetor[indiceMenor]) {
+                indiceMenor = j;
+            }
+        }
+
+        // Se o índice do menor elemento não for o mesmo que o índice i, troca os elementos
+        // Isso significa que o menor elemento foi encontrado no restante do vetor
+        if (indiceMenor != i) {
+            trocar(&vetor[i], &vetor[indiceMenor]);  // Chama a função de troca para colocar o menor elemento na posição correta
+        }
+    }
+}

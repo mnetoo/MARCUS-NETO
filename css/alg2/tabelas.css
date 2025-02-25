@@ -1,0 +1,123 @@
+/* tabelas.css */
+
+.tabela{
+    grid-column-start: 2 !important;
+    grid-column-end: 2;
+}
+
+/**/
+.titulo {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    background-color: #4157a3;
+    color: white;
+    font-weight: 500;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    padding: 0px 10px;
+}
+
+.duplo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.duplo p{
+    padding: 0;
+}
+/**/
+
+.linha{
+    border-bottom: 0.5px solid #dee2e6;
+    border-left: 0.5px solid #dee2e6;
+    border-right: 0.5px solid #dee2e6;
+    column-gap: 1vw;
+    padding: 0 1vw 0 1vw;
+}
+
+.branca{
+    background-color: white;
+}
+
+.cinza{
+    background-color: #f2f2f2;
+}
+
+.fim {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.bordaEsquerda{
+    border-left: 0.5px solid #dee2e6;
+    padding-left: 1vw;
+}
+
+.bordaDireita{
+    border-right: 0.5px solid #dee2e6;
+    padding-right: 1vw;
+}
+
+
+
+
+
+
+
+
+
+
+/**/
+
+.duasColunas .linha {
+    display: grid;
+    grid-template-columns: 0.28fr 1.82fr;
+}
+
+.quatroColunas .linha {
+    display: grid;
+    grid-template-columns: 0.55fr 1.45fr 0.5fr 1.5fr;
+}
+
+.seisColunas .linha {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr 0.5fr 1.5fr 0.5fr 1.5fr;
+}
+
+.oitoColunas .linha {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr 0.45fr 1.55fr 0.8fr 1.2fr 0.25fr 1.75fr;
+}
+
+
+
+
+
+
+
+
+
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    border: 2px solid #f2f2f2; /* Borda ao redor de toda a tabela */
+}
+th, td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2; /* Cor de fundo da linha do título */
+    border: 2px solid #000; /* Bordas da linha do título com a mesma cor da borda da tabela */
+}
+caption {
+    font-size: 13px;
+    font-style: italic;
+    text-align: center;
+    padding-top: 10px;
+}
+tr {
+    border-bottom: 1px solid #000; /* Divisória entre as linhas */
+}

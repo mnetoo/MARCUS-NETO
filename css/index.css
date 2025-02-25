@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/*BARRA LATERAL MENOR*/
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgray;
+}
+
+
+
+
+body {
+    background: linear-gradient(to right, rgb(2, 1, 39), rgb(2, 0, 15));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    height: 100vh;
+}
+
+
+h5 {
+    grid-column-start: 2;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 0.7fr 4fr 0.7fr 2fr;
+    text-align: left;
+    row-gap: 5vh;
+    padding-top: 20vh;
+    padding-bottom: 5vh;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.box {
+    grid-column-start: 2;
+    color: white;
+}
+
+.box h1 {
+    font-size: 60px;
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 800;
+    padding: 0;
+    margin: 0;
+
+}
+
+.Curriculo {
+    grid-column-start: 4;
+    border-radius: 15px;
+    background-color:  rgb(14, 13, 49);
+    width: 270px;
+    height: 75px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    display: flex;
+}
+
+.Curriculo a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave */
+}
+
+.Curriculo a:hover {
+    color: rgb(112, 50, 228); /* Muda a cor do texto */
+    transform: scale(1.2); /* Aumenta ligeiramente o tamanho */
+}
+
+/* Efeito de preenchimento de fundo */
+.Curriculo a::after {
+    content: "";
+    position:static;
+    left: 0;
+    bottom: 0;
+    width: 70%;
+    height: 2px;
+    background: rgb(112, 50, 228);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.Curriculo a:hover::after {
+    transform: scaleX(1); /* Expande a linha sob o texto */
+}
+
+.Curriculo p  {
+    margin: 0;
+}
+
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 10px !important;
+    }
+
+    main {
+        row-gap: 2vh !important;
+        padding-top: 2vh !important;
+        padding-bottom: 2vh !important;
+    }
+
+    h5 {
+        font-size: 12px !important;
+    }
+
+    ul, li {
+        font-size: 10px !important;
+    }
+
+    img {
+        width: 75px !important;          
+        height: 90px !important;
+    }
+
+    button {
+        font-size: 8px !important;
+    }
+
+    main p {
+        margin: 0 !important;
+        vertical-align: middle !important;
+        line-height: 1rem !important;
+    }
+}
+/* Regras para iPad/Tablet (largura mínima de 768px e largura máxima de 1200px)*/
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    body {
+        font-size: 10px !important;
+    }
+
+    main {
+        row-gap: 2vh !important;
+        padding-top: 2vh !important;
+        padding-bottom: 2vh !important;
+    }
+
+    h5 {
+        font-size: 12px !important;
+    }
+
+    ul, li {
+        font-size: 10px !important;
+    }
+
+    img {
+        width: 75px !important;          
+        height: 90px !important;
+    }
+
+    button {
+        font-size: 8px !important;
+    }
+
+    main p {
+        margin: 0 !important;
+        vertical-align: middle !important;
+        line-height: 1rem !important;
+    }
+}

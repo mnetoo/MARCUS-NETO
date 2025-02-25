@@ -1,0 +1,200 @@
+/*BARRA LATERAL MENOR*/
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgray;
+}
+
+html {
+    text-align: center;
+
+}
+
+h3 {
+    grid-column-start: 2;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 0.7fr 6fr 0.7fr;
+    text-align: left;
+    row-gap: 2vh;
+    padding-top: 4vh;
+    padding-bottom: 5vh;
+}
+
+.relatorio {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.relatorio div {
+    grid-column-start: 2;
+    align-items: center;
+}
+
+.relatorio div a{
+    grid-column-start: 2;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin: 0;
+}
+
+.relatorio div p {
+    grid-column-start: 2;
+    text-align: center;
+    margin: 0;
+}
+
+.ordenacao {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 10px;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.ordenacao div {
+    grid-column-start: 2;
+    align-items: center;
+}
+
+.ordenacao div a{
+    grid-column-start: 2;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin: 0;
+}
+
+.ordenacao div p {
+    grid-column-start: 2;
+    text-align: center;
+    margin: 0;
+}
+
+.busca {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 10px;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.busca div {
+    grid-column-start: 2;
+    align-items: center;
+}
+
+.busca div a{
+    grid-column-start: 2;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin: 0;
+}
+
+.busca div p {
+    grid-column-start: 2;
+    text-align: center;
+    margin: 0;
+}
+
+
+
+
+
+
+.analise {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 10px;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.analise div {
+    grid-column-start: 2;
+    align-items: center;
+}
+
+.analise div a{
+    grid-column-start: 2;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin: 0;
+}
+
+.analise div p {
+    grid-column-start: 2;
+    text-align: center;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+button {
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+button a {
+    text-decoration: none;
+    color: black;
+}
+
+.apresentacao {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: 5fr 0.5fr;
+    column-gap: 10px;
+}
+
+.apresentacao  {
+    align-items: center;
+    text-align: center;
+}
+
+.circle {
+    width: 150px;          
+    height: 175px;  
+    border-radius: 20px;       
+    overflow: hidden;      
+    display: flex;
+    align-items: center;   
+    justify-content: center;
+}
+
+.circle img {
+    width: 100%;         
+    height: 100%;     
+    padding: 10px;
+}
+
+hr {
+    border: none; 
+    height: 2px; 
+    background-color: black;
+}
